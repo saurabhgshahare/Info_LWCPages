@@ -1,0 +1,31 @@
+<template>
+    <lightning-card title="Create Account and Contact" icon-name="standard:account">
+        <div class="slds-section slds-is-open slds-p-around_medium">
+           
+            <h3 class="slds-section__title slds-theme_shade">
+                <span class="slds-truncate slds-p-horizontal_small" title="Account Details">Account Details</span>
+            </h3>
+                <lightning-input label="Name" value={accountName} onchange={handleAccountNameChange}></lightning-input>
+                <lightning-input label="Phone" value={accountPhone} onchange={handleAccountPhoneChange}></lightning-input>
+                <lightning-combobox label="Type" value={type} options={typeOptions} onchange={handleTypeChange}></lightning-combobox>
+                <lightning-combobox label="Industry" value={industry} options={industryOptions} onchange={handleIndustryChange}></lightning-combobox>
+                <lightning-combobox label="Rating" value={rating} options={ratingOptions} onchange={handleRatingChange}></lightning-combobox>
+        </div>
+        <div class="slds-section slds-is-open slds-p-around_medium">
+        
+            <h3 class="slds-section__title slds-theme_shade">
+                <span class="slds-truncate slds-p-horizontal_small" title="Contact Details">Contact Details</span>
+            </h3>
+            
+                <lightning-input label="First Name" value={contactFirstName} onchange={handleContactFirstNameChange}></lightning-input>
+                <lightning-input label="Last Name" value={contactLastName} onchange={handleContactLastNameChange}></lightning-input>
+                <lightning-input label="Email" value={contactEmail} onchange={handleContactEmailChange}></lightning-input>
+                <lightning-input label="Department" value={contactDepartment} onchange={handleContactDepartmentChange}></lightning-input>
+          
+      <br></br>
+
+    
+            <lightning-button label="Submit" onclick={handleCreate} variant="brand" disabled={isSubmitDisabled}></lightning-button>
+        </div>
+    </lightning-card>
+</template>
