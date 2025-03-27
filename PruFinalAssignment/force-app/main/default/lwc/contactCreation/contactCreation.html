@@ -1,0 +1,46 @@
+<template>
+    <lightning-card title="Create Contact" icon-name="standard:contact">
+        <div class="form-section slds-grid slds-m-around-medium">
+            <div class="slds-col slds-size_1-of-2">
+                <lightning-input label="First Name" value={firstName} onchange={handleInputChange} data-field="firstName" required></lightning-input>
+                <lightning-input label="Last Name" value={lastName} onchange={handleInputChange} data-field="lastName" required></lightning-input>
+                <lightning-input label="Email" value={email} onchange={handleInputChange} data-field="email" required></lightning-input>
+                <lightning-input label="Phone" value={phone} onchange={handleInputChange} data-field="phone" required></lightning-input>
+                <lightning-input label="SSN" value={ssn} onchange={handleInputChange} data-field="ssn" required></lightning-input>
+                <lightning-input label="Mailing City" value={mailingCity} onchange={handleInputChange} data-field="mailingCity"></lightning-input>
+            </div>
+        </div> 
+
+        <div class="form-section slds-grid slds-section slds-is-open">
+            <div class="slds-col slds-size_1-of-2">
+                <h3 class="slds-section__title slds-theme_shade">
+                    <span class="slds-truncate slds-p-horizontal_small" title="Section Title">Policy Information</span>
+                  </h3>
+                <lightning-combobox
+                    label="Policy Type"
+                    value={policyType}
+                    options={policyTypeOptions}
+                    onchange={handlePolicyInputChange}
+                    data-field="policyType"
+                    required 
+                ></lightning-combobox> 
+
+                <lightning-input label="Amount" type="number" value={policyAmount} onchange={handlePolicyInputChange} data-field="policyAmount" required></lightning-input>
+                <lightning-button label="Add Policy" onclick={addPolicy} variant="brand"></lightning-button>
+            </div>
+        </div>
+
+        <lightning-button label="Back" onclick={navigateBack} variant="neutral"></lightning-button>
+
+        <template if:true={policies.length}>
+            <lightning-datatable
+                key-field="Id"
+                data={policies}
+                columns={policyColumns}>
+            </lightning-datatable>
+            <div class="button-section slds-align_absolute-center">
+                <lightning-button label="Submit" onclick={submitForm} variant="brand"></lightning-button>
+            </div>
+        </template>
+    </lightning-card>
+</template>
